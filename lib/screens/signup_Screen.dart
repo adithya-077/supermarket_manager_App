@@ -22,6 +22,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwrdText = TextEditingController();
   final TextEditingController _bioText = TextEditingController();
   final TextEditingController _usernameText = TextEditingController();
+  final TextEditingController _dname = TextEditingController();
+  final TextEditingController _mbno = TextEditingController();
   Uint8List? _image;
 
   @override
@@ -31,6 +33,8 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwrdText.dispose();
     _bioText.dispose();
     _usernameText.dispose();
+    _mbno.dispose();
+    _dname.dispose();
   }
 
   void selectImgae() async {
@@ -118,15 +122,36 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: screenSize.height * 0.04,
                     width: double.infinity,
                   ),
+                  TextInputTemplate(
+                      txcontroller: _mbno,
+                      ispassword: false,
+                      keyType: TextInputType.text,
+                      hintText: "enter mobile number"),
+                  SizedBox(
+                    height: screenSize.height * 0.04,
+                    width: double.infinity,
+                  ),
+                  TextInputTemplate(
+                      txcontroller: _dname,
+                      ispassword: false,
+                      keyType: TextInputType.text,
+                      hintText: "enter a display name"),
+                  SizedBox(
+                    height: screenSize.height * 0.04,
+                    width: double.infinity,
+                  ),
                   GestureDetector(
                     onTap: () async {
                       String isdone = await checker(
-                          _emailText.text,
-                          _passwrdText.text,
-                          _usernameText.text,
-                          _bioText.text,
-                          _image!,
-                          context);
+                        _emailText.text,
+                        _passwrdText.text,
+                        _usernameText.text,
+                        _bioText.text,
+                        _image!,
+                        context,
+                        _dname.text,
+                        _mbno.text,
+                      );
                       if (isdone == 'done') {
                         Navigator.of(context).pop();
                       }

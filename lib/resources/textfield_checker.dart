@@ -13,6 +13,8 @@ Future<String> checker(
   String bioText,
   Uint8List image,
   BuildContext context,
+  String dname,
+  String mbno,
 ) async {
   String isdone = 'Some error';
   if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -21,11 +23,14 @@ Future<String> checker(
       // ignore: unnecessary_null_comparison
       image != null) {
     String res = await AuthMethod().signUpMethod(
-        email: emailText,
-        password: passwrdText,
-        username: usernameText,
-        bio: bioText,
-        dpImg: image);
+      email: emailText,
+      password: passwrdText,
+      username: usernameText,
+      bio: bioText,
+      dpImg: image,
+      dname: dname,
+      mbno: mbno,
+    );
     isdone = 'done';
 
     if (res != 'done') {

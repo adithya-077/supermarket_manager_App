@@ -16,6 +16,8 @@ class AuthMethod {
     required String username,
     required String bio,
     required Uint8List dpImg,
+    required String mbno,
+    required String dname,
   }) async {
     String res = 'some error occured ';
     try {
@@ -23,21 +25,30 @@ class AuthMethod {
           password.isNotEmpty ||
           username.isNotEmpty ||
           bio.isNotEmpty ||
-          dpImg != null) {
+          // ignore: unnecessary_null_comparison
+          dpImg != null ||
+          dname.isNotEmpty ||
+          mbno.isNotEmpty) {
         UserCredential userCred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
         String photourl =
             await StoreImage().uploadImage('profilepics', dpImg, false);
 
-        await _firestore.collection('users').doc(userCred.user!.uid).set({
-          'username': username,
-          'uid': userCred.user!.uid,
-          'email': email,
-          'followers': [],
-          'following': [],
-          'dpurl': photourl,
-        });
+        UserDataModels userObj = UserDataModels(
+            userName: username,
+            dpName: dname,
+            email: email,
+            followers: [],
+            following: [],
+            dpUrl: photourl,
+            userUid: userCred.user!.uid,
+            mbno: mbno);
+
+        await _firestore
+            .collection('users')
+            .doc(userCred.user!.uid)
+            .set(userObj.toJson());
         res = 'done';
       }
     } on FirebaseException catch (err) {
@@ -60,7 +71,7 @@ class AuthMethod {
 
     try {
       if (email.isNotEmpty || password.isEmpty) {
-        UserCredential userCred = await _auth.signInWithEmailAndPassword(
+        await _auth.signInWithEmailAndPassword(
             email: email, password: password);
         res = 'done';
       } else {

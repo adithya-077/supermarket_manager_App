@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart';
+//import 'package:flutter/widgets.dart';
+//import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart';
 import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 import 'package:flutter_application_instagram_clone/screens/signup_Screen.dart';
 import 'package:flutter_application_instagram_clone/util/colors.dart';
 import 'package:flutter_application_instagram_clone/util/showSnackBar.dart';
 import 'package:flutter_application_instagram_clone/widgets/textinput_template.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 
 import '../resposive/mobilescreen.dart';
 import '../resposive/responsive_screen_layout.dart';

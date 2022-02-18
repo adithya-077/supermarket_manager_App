@@ -8,6 +8,7 @@ class userDataModels {
   final List following;
   final String dpUrl;
   final String userUid;
+  final String mbno;
 
   userDataModels({
     required this.userName,
@@ -17,6 +18,7 @@ class userDataModels {
     required this.following,
     required this.dpUrl,
     required this.userUid,
+    required this.mbno,
   });
 
   Map<String, dynamic> toJson() => {
@@ -27,5 +29,7 @@ class userDataModels {
         'following': followers,
         'dpurl': dpUrl,
         'userid': userUid,
+        'displayname': dpName,
+        'mobileno': mbno,
       };
 }
