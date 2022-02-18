@@ -8,5 +8,5 @@ pickImage(ImageSource imgSource) async {
   if (img != null) {
     return img.readAsBytes();
   }
-  print('no image was selected');
+  //print('no image was selected');
 }

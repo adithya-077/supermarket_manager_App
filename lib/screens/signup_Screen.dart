@@ -1,12 +1,11 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 //import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 import 'package:flutter_application_instagram_clone/resources/textfield_checker.dart';
 import 'package:flutter_application_instagram_clone/util/colors.dart';
 import 'package:flutter_application_instagram_clone/util/image_picker.dart';
 import 'package:flutter_application_instagram_clone/widgets/textinput_template.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignupScreen extends StatefulWidget {

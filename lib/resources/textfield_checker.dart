@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_instagram_clone/screens/signup_Screen.dart';
+//import 'package:flutter_application_instagram_clone/screens/signup_Screen.dart';
 import 'package:flutter_application_instagram_clone/util/showSnackBar.dart';
 
 import 'auth_method.dart';

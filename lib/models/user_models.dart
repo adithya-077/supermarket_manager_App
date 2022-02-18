@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 
-class userDataModels {
+class UserDataModels {
   final String userName;
   final String dpName;
   final String email;
@@ -10,7 +11,7 @@ class userDataModels {
   final String userUid;
   final String mbno;
 
-  userDataModels({
+  UserDataModels({
     required this.userName,
     required this.dpName,
     required this.email,
@@ -32,4 +33,18 @@ class userDataModels {
         'displayname': dpName,
         'mobileno': mbno,
       };
+  static UserDataModels fromsnap(DocumentSnapshot snap) {
+    var snapshot = snap as Map<String, dynamic>;
+
+    return UserDataModels(
+      dpName: snapshot['displayname'],
+      dpUrl: snapshot['dpurl'],
+      email: snapshot['email'],
+      followers: snapshot['followers'],
+      following: snapshot['following'],
+      mbno: snapshot['mobileno'],
+      userName: snapshot['username'],
+      userUid: snapshot['userid'],
+    );
+  }
 }
