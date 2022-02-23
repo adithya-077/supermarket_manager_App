@@ -1,12 +1,14 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_application_instagram_clone/assets/profilePic/list_propic.dart';
 //import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 import 'package:flutter_application_instagram_clone/resources/textfield_checker.dart';
 import 'package:flutter_application_instagram_clone/util/colors.dart';
-import 'package:flutter_application_instagram_clone/util/image_picker.dart';
 import 'package:flutter_application_instagram_clone/widgets/textinput_template.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -24,6 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _dname = TextEditingController();
   final TextEditingController _mbno = TextEditingController();
   Uint8List? _image;
+  late int prono = 999;
 
   @override
   void dispose() {
@@ -36,16 +39,68 @@ class _SignupScreenState extends State<SignupScreen> {
     _dname.dispose();
   }
 
-  void selectImgae() async {
-    Uint8List? _img = await pickImage(ImageSource.gallery);
-    setState(() {
-      _image = _img;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
+    List propics = Provider.of<ProfilePicFetcher>(context).proPic;
+
+    void selectImgae() async {
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: screenSize.height * 0.4,
+              child: Column(children: [
+                SizedBox(
+                  height: screenSize.height * 0.2,
+                  width: double.infinity,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: propics.length,
+                      itemBuilder: (_, idx) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(150),
+                              color: blueColor,
+                            ),
+                            width: screenSize.width * 0.4,
+                            child: GestureDetector(
+                              onTap: (() {
+                                setState(() {
+                                  prono = idx;
+                                });
+                                Navigator.of(context).pop();
+                              }),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(150),
+                                child: Image.asset(
+                                  propics[idx],
+                                  fit: BoxFit.fill,
+                                  height: 100,
+                                  width: double.infinity,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('exit')),
+                ),
+              ]),
+            );
+          });
+    }
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -62,9 +117,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   Stack(
                     children: [
-                      _image != null
-                          ? CircleAvatar(
-                              radius: 50, backgroundImage: MemoryImage(_image!))
+                      prono != 999
+                          ? Container(
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(150),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(150),
+                                child: Image.asset(propics[prono],
+                                    fit: BoxFit.contain),
+                              ),
+                            )
                           : const CircleAvatar(
                               radius: 50,
                               backgroundImage: NetworkImage(
@@ -146,7 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         _passwrdText.text,
                         _usernameText.text,
                         _bioText.text,
-                        _image!,
+                        prono,
                         context,
                         _dname.text,
                         _mbno.text,

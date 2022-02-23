@@ -3,9 +3,18 @@ import 'package:flutter_application_instagram_clone/models/user_models.dart';
 import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 
 class UserdataProvider with ChangeNotifier {
-  UserDataModels? _user;
+  UserDataModels _user = UserDataModels(
+      userName: 'userName',
+      dpName: 'dpName',
+      email: 'email',
+      followers: [],
+      following: [],
+      dpno: 0,
+      userUid: 'userUid',
+      bio: 'bio',
+      mbno: 'mbno');
 
-  UserDataModels get getUser => _user!;
+  UserDataModels get getUser => _user;
 
   final AuthMethod _authMethod = AuthMethod();
 
@@ -13,7 +22,6 @@ class UserdataProvider with ChangeNotifier {
     UserDataModels user = await _authMethod.getUserinformation();
 
     _user = user;
-    print('REFREDED USERS');
     notifyListeners();
   }
 }

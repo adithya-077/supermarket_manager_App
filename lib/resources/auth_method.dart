@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_instagram_clone/models/user_models.dart';
-import 'package:flutter_application_instagram_clone/resources/store_image.dart';
 
 class AuthMethod {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -11,6 +10,8 @@ class AuthMethod {
 
   Future<UserDataModels> getUserinformation() async {
     User currentUser = _auth.currentUser!;
+    // ignore: avoid_print
+    print(currentUser.email);
 
     DocumentSnapshot snap =
         await _firestore.collection('users').doc(currentUser.uid).get();
@@ -24,7 +25,7 @@ class AuthMethod {
     required String password,
     required String username,
     required String bio,
-    required Uint8List dpImg,
+    required int dpImgno,
     required String mbno,
     required String dname,
   }) async {
@@ -34,30 +35,27 @@ class AuthMethod {
           password.isNotEmpty ||
           username.isNotEmpty ||
           bio.isNotEmpty ||
-          // ignore: unnecessary_null_comparison
-          dpImg != null ||
           dname.isNotEmpty ||
           mbno.isNotEmpty) {
         UserCredential userCred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
-        String photourl =
-            await StoreImage().uploadImage('profilepics', dpImg, false);
-
-        UserDataModels userObj = UserDataModels(
+        UserDataModels user = UserDataModels(
             userName: username,
             dpName: dname,
             email: email,
             followers: [],
             following: [],
-            dpUrl: photourl,
+            dpno: dpImgno,
             userUid: userCred.user!.uid,
-            mbno: mbno);
+            mbno: mbno,
+            bio: bio);
 
         await _firestore
             .collection('users')
             .doc(userCred.user!.uid)
-            .set(userObj.toJson());
+            .set(user.toJson());
+
         res = 'done';
       }
     } on FirebaseException catch (err) {

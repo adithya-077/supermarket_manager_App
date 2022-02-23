@@ -7,9 +7,10 @@ class UserDataModels {
   final String email;
   final List followers;
   final List following;
-  final String dpUrl;
+  final int dpno;
   final String userUid;
   final String mbno;
+  final String bio;
 
   UserDataModels({
     required this.userName,
@@ -17,34 +18,37 @@ class UserDataModels {
     required this.email,
     required this.followers,
     required this.following,
-    required this.dpUrl,
+    required this.dpno,
     required this.userUid,
     required this.mbno,
+    required this.bio,
   });
 
   Map<String, dynamic> toJson() => {
-        'username': userName,
-        'dpname': dpName,
-        'email': email,
-        'follwers': followers,
-        'following': followers,
-        'dpurl': dpUrl,
-        'userid': userUid,
-        'displayname': dpName,
-        'mobileno': mbno,
+        "bio": bio,
+        "username": userName,
+        "displayname": dpName,
+        "email": email,
+        "follwers": followers,
+        "following": following,
+        "dpno": dpno,
+        "userid": userUid,
+        "mobileno": mbno,
       };
+
   static UserDataModels fromsnap(DocumentSnapshot snap) {
-    var snapshot = snap as Map<String, dynamic>;
+    var snapshot = snap.data() as Map<String, dynamic>;
 
     return UserDataModels(
       dpName: snapshot['displayname'],
-      dpUrl: snapshot['dpurl'],
+      dpno: snapshot['dpno'],
       email: snapshot['email'],
-      followers: snapshot['followers'],
+      followers: snapshot['follwers'],
       following: snapshot['following'],
       mbno: snapshot['mobileno'],
       userName: snapshot['username'],
       userUid: snapshot['userid'],
+      bio: snapshot['bio'],
     );
   }
 }

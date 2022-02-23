@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_instagram_clone/assets/profilePic/list_propic.dart';
 import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart';
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
@@ -47,6 +48,9 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (_) => UserdataProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => ProfilePicFetcher(),
+        )
       ],
       child: MaterialApp(
         theme: ThemeData.dark()
