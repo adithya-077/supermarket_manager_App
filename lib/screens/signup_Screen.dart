@@ -25,7 +25,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _usernameText = TextEditingController();
   final TextEditingController _dname = TextEditingController();
   final TextEditingController _mbno = TextEditingController();
-  Uint8List? _image;
   late int prono = 999;
 
   @override
