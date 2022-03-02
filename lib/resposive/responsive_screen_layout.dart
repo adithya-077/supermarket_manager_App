@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_instagram_clone/provider/product_provider.dart';
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -17,9 +18,13 @@ class ResponsiveLayout extends StatefulWidget {
 
 class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   addData() async {
-    UserdataProvider _userProvider = Provider.of(context, listen: false);
+    UserdataProvider _userProvider =
+        Provider.of<UserdataProvider>(context, listen: false);
     await _userProvider.refreshUserdata();
-    print('inside adddata');
+
+    ProductProvider _prod =
+        Provider.of<ProductProvider>(context, listen: false);
+    await _prod.updateProducts();
   }
 
   @override

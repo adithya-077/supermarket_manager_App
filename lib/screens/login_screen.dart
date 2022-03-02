@@ -14,6 +14,7 @@ import '../resposive/responsive_screen_layout.dart';
 import '../resposive/webscreen.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = 'login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -38,8 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
-            mobileScreen: MoblieScreen(),
-            webScreen: WebScreen(),
+            mobileScreen: WebScreen(),
+            webScreen: MobileScreen(),
           ),
         ),
       );

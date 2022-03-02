@@ -8,10 +8,9 @@ Future<String> checker(
   String emailText,
   String passwrdText,
   String usernameText,
-  String bioText,
+  String role,
   int imageno,
   BuildContext context,
-  String dname,
   String mbno,
 ) async {
   String isdone = 'Some error';
@@ -22,9 +21,8 @@ Future<String> checker(
       email: emailText,
       password: passwrdText,
       username: usernameText,
-      bio: bioText,
+      role: role,
       dpImgno: imageno,
-      dname: dname,
       mbno: mbno,
     );
     isdone = 'done';

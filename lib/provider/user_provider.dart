@@ -5,13 +5,10 @@ import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 class UserdataProvider with ChangeNotifier {
   UserDataModels _user = UserDataModels(
       userName: 'userName',
-      dpName: 'dpName',
       email: 'email',
-      followers: [],
-      following: [],
       dpno: 0,
       userUid: 'userUid',
-      bio: 'bio',
+      role: 'role',
       mbno: 'mbno');
 
   UserDataModels get getUser => _user;

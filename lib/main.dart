@@ -4,8 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_instagram_clone/assets/profilePic/list_propic.dart';
 import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart';
+import 'package:flutter_application_instagram_clone/provider/product_provider.dart';
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
+import 'package:flutter_application_instagram_clone/screens/add_products.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
+import 'package:flutter_application_instagram_clone/screens/showproducts.dart';
 import 'package:flutter_application_instagram_clone/screens/signup_Screen.dart';
 import 'package:provider/provider.dart';
 
@@ -50,6 +53,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => ProfilePicFetcher(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
         )
       ],
       child: MaterialApp(
@@ -63,8 +69,8 @@ class _MyAppState extends State<MyApp> {
               if (snapshot.connectionState == ConnectionState.active) {
                 if (snapshot.hasData) {
                   return const ResponsiveLayout(
-                    mobileScreen: MoblieScreen(),
-                    webScreen: WebScreen(),
+                    mobileScreen: WebScreen(),
+                    webScreen: MobileScreen(),
                   );
                 } else if (snapshot.hasError) {
                   return Center(
@@ -84,6 +90,9 @@ class _MyAppState extends State<MyApp> {
         routes: {
           SignupScreen.routeName: (context) => const SignupScreen(),
           Dummyloader.routName: (context) => const Dummyloader(),
+          LoginScreen.routeName: (context) => const LoginScreen(),
+          AddProductsScreen.routName: ((context) => const AddProductsScreen()),
+          ShowProducts.routName: (context) => const ShowProducts(),
         },
       ),
     );

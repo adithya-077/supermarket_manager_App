@@ -1,13 +1,11 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_application_instagram_clone/assets/profilePic/list_propic.dart';
 //import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 import 'package:flutter_application_instagram_clone/resources/textfield_checker.dart';
 import 'package:flutter_application_instagram_clone/util/colors.dart';
 import 'package:flutter_application_instagram_clone/widgets/textinput_template.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -21,7 +19,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailText = TextEditingController();
   final TextEditingController _passwrdText = TextEditingController();
-  final TextEditingController _bioText = TextEditingController();
+  final TextEditingController _roleText = TextEditingController();
   final TextEditingController _usernameText = TextEditingController();
   final TextEditingController _dname = TextEditingController();
   final TextEditingController _mbno = TextEditingController();
@@ -32,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
     super.dispose();
     _emailText.dispose();
     _passwrdText.dispose();
-    _bioText.dispose();
+    _roleText.dispose();
     _usernameText.dispose();
     _mbno.dispose();
     _dname.dispose();
@@ -102,6 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(backgroundColor: mobileBackgroundColor),
         body: SingleChildScrollView(
           child: Container(
             height: screenSize.height,
@@ -126,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(150),
                                 child: Image.asset(propics[prono],
-                                    fit: BoxFit.contain),
+                                    fit: BoxFit.cover),
                               ),
                             )
                           : const CircleAvatar(
@@ -177,10 +176,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     width: double.infinity,
                   ),
                   TextInputTemplate(
-                      txcontroller: _bioText,
+                      txcontroller: _roleText,
                       ispassword: false,
                       keyType: TextInputType.text,
-                      hintText: "enter a bio"),
+                      hintText: "enter a role"),
                   SizedBox(
                     height: screenSize.height * 0.04,
                     width: double.infinity,
@@ -194,25 +193,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: screenSize.height * 0.04,
                     width: double.infinity,
                   ),
-                  TextInputTemplate(
-                      txcontroller: _dname,
-                      ispassword: false,
-                      keyType: TextInputType.text,
-                      hintText: "enter a display name"),
-                  SizedBox(
-                    height: screenSize.height * 0.04,
-                    width: double.infinity,
-                  ),
                   GestureDetector(
                     onTap: () async {
                       String isdone = await checker(
                         _emailText.text,
                         _passwrdText.text,
                         _usernameText.text,
-                        _bioText.text,
+                        _roleText.text,
                         prono,
                         context,
-                        _dname.text,
                         _mbno.text,
                       );
                       if (isdone == 'done') {
