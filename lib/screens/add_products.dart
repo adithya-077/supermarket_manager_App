@@ -58,7 +58,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
             ),
             TextInputTemplate(
                 txcontroller: _prodoctUid,
-                ispassword: true,
+                ispassword: false,
                 keyType: TextInputType.text,
                 hintText: "enter product id"),
             SizedBox(
@@ -67,7 +67,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
             ),
             TextInputTemplate(
                 txcontroller: _prodoctQuantity,
-                ispassword: true,
+                ispassword: false,
                 keyType: TextInputType.number,
                 hintText: "enter product quantity"),
             SizedBox(

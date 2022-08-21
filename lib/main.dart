@@ -7,6 +7,7 @@ import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart
 import 'package:flutter_application_instagram_clone/provider/product_provider.dart';
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
 import 'package:flutter_application_instagram_clone/screens/add_products.dart';
+import 'package:flutter_application_instagram_clone/screens/barcodeProduct.dart';
 import 'package:flutter_application_instagram_clone/screens/createbarcode.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
 import 'package:flutter_application_instagram_clone/screens/showproducts.dart';
@@ -94,6 +95,7 @@ class _MyAppState extends State<MyApp> {
           AddProductsScreen.routName: ((context) => const AddProductsScreen()),
           ShowProducts.routName: (context) => const ShowProducts(),
           CreateBarcode.routName: ((context) => const CreateBarcode()),
+          BarcodeProd.routName: (context) => const BarcodeProd(),
         },
       ),
     );

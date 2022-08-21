@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^1.0.1
   image_picker: ^0.8.4+7
   provider: ^6.0.2
+  barcode_widget: ^2.0.3
 
 dev_dependencies:
   flutter_test:

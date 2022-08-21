@@ -13,10 +13,7 @@ class ProductProvider with ChangeNotifier {
 
   Future<void> updateProducts() async {
     List<dynamic> products = await AuthMethod().getAllProducts();
-
     productAll = products;
     notifyListeners();
-    // ignore: avoid_print
-    print(productAll);
   }
 }

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_instagram_clone/models/product_models.dart';
 import 'package:flutter_application_instagram_clone/models/user_models.dart';
+import 'package:flutter_application_instagram_clone/provider/product_provider.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
 
 class AuthMethod {
@@ -21,6 +22,7 @@ class AuthMethod {
   //delete product
   Future<void> deletedById(String id) async {
     await _firestore.collection('products').doc(id).delete();
+    ProductProvider().updateProducts();
   }
   //show all products
 
