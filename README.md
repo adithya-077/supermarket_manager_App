@@ -1,16 +1,28 @@
-# flutter_application_instagram_clone
+App to save the list of products or items which are are on your wish list
 
-A new Flutter project.
+-> add products and display all products are implemented ,once a product is added the product is stored in the firebase storage . This project was very helpful to know      about the firebase firestore and also about the firebase login using email and password.  
+-> You can create an account and login , Backend used is Firebase with state persistence implemented.
+-> provider is used for state management .
 
-## Getting Started
+FEATURE THAT ARE TO BE IMPLEMENTED :-
+-> helps to create barcode for each product which and also scan the created barcode to get the product details. barcode helps to track the products (i.e Expiry date, date of manufacture , etc..) .
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**LOGIN SCREEN**                                                                                                               
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![image](https://user-images.githubusercontent.com/92781591/185750492-d353397a-476a-4762-8cf6-12e569c64218.png)                 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**HOME PAGE**
+
+
+
+![image](https://user-images.githubusercontent.com/92781591/185750627-7811519d-5bc5-44cd-9126-03b6db6ddd86.png)
+
+
+
+
