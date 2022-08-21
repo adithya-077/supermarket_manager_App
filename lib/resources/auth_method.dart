@@ -4,9 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_instagram_clone/models/product_models.dart';
 import 'package:flutter_application_instagram_clone/models/user_models.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
-import 'package:provider/provider.dart';
-
-import '../provider/user_provider.dart';
 
 class AuthMethod {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -20,6 +17,11 @@ class AuthMethod {
 
     return UserDataModels.fromsnap(snap);
   }
+
+  //delete product
+  Future<void> deletedById(String id) async {
+    await _firestore.collection('products').doc(id).delete();
+  }
   //show all products
 
   Future<List> getAllProducts() async {
@@ -27,6 +29,7 @@ class AuthMethod {
     await _firestore
         .collection('products')
         .get()
+        // ignore: avoid_function_literals_in_foreach_calls
         .then((snapshot) => snapshot.docs.forEach((ele) {
               products.add(ele.data());
             }));

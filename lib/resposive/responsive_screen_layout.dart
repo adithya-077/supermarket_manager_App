@@ -24,6 +24,7 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
 
     ProductProvider _prod =
         Provider.of<ProductProvider>(context, listen: false);
+    setState(() {});
     await _prod.updateProducts();
   }
 

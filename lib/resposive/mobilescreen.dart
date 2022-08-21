@@ -7,6 +7,7 @@ import 'package:flutter_application_instagram_clone/provider/product_provider.da
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
 import 'package:flutter_application_instagram_clone/resources/auth_method.dart';
 import 'package:flutter_application_instagram_clone/screens/add_products.dart';
+import 'package:flutter_application_instagram_clone/screens/createbarcode.dart';
 import 'package:flutter_application_instagram_clone/screens/showproducts.dart';
 import 'package:flutter_application_instagram_clone/util/colors.dart';
 import 'package:provider/provider.dart';
@@ -88,8 +89,10 @@ class _MobileScreenState extends State<MobileScreen> {
                 child: const Text('add products'),
               ),
               TextButton(
-                onPressed: () {},
-                child: const Text('delete product'),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CreateBarcode.routName);
+                },
+                child: const Text('create barcode'),
               ),
             ],
           ),

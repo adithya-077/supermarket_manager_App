@@ -7,6 +7,7 @@ import 'package:flutter_application_instagram_clone/dummyLoader/dummyLoader.dart
 import 'package:flutter_application_instagram_clone/provider/product_provider.dart';
 import 'package:flutter_application_instagram_clone/provider/user_provider.dart';
 import 'package:flutter_application_instagram_clone/screens/add_products.dart';
+import 'package:flutter_application_instagram_clone/screens/createbarcode.dart';
 import 'package:flutter_application_instagram_clone/screens/login_screen.dart';
 import 'package:flutter_application_instagram_clone/screens/showproducts.dart';
 import 'package:flutter_application_instagram_clone/screens/signup_Screen.dart';
@@ -16,7 +17,6 @@ import './resposive/responsive_screen_layout.dart';
 import './resposive/mobilescreen.dart';
 import './resposive/webscreen.dart';
 import './util/colors.dart';
-import 'screens/signup_Screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -93,6 +93,7 @@ class _MyAppState extends State<MyApp> {
           LoginScreen.routeName: (context) => const LoginScreen(),
           AddProductsScreen.routName: ((context) => const AddProductsScreen()),
           ShowProducts.routName: (context) => const ShowProducts(),
+          CreateBarcode.routName: ((context) => const CreateBarcode()),
         },
       ),
     );
