@@ -25,6 +25,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
     _prodoctQuantity.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return SafeArea(
