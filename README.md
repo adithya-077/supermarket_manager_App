@@ -1,8 +1,11 @@
 App to save the list of products or items which are are on your wish list
 
--> add products and display all products are implemented ,once a product is added the product is stored in the firebase storage . This project was very helpful to know      about the firebase firestore and also about the firebase login using email and password.  
+-> add products and display all products are implemented ,once a product is added the product is stored in the firebase storage . This project was very helpful to know about the firebase firestore and also about the firebase login using email and password.  
+
 -> You can create an account and login , Backend used is Firebase with state persistence implemented.
+
 -> provider is used for state management .
+
 -> helps to create barcode for each product which and also scan the created barcode to get the product details. barcode helps to track the products (i.e Expiry date, date of manufacture , etc..) .
 
 
@@ -11,7 +14,7 @@ App to save the list of products or items which are are on your wish list
 **LOGIN SCREEN**                                                                                                               
 
 
-![image](https://user-images.githubusercontent.com/92781591/185750492-d353397a-476a-4762-8cf6-12e569c64218.png)                 
+![image](https://user-images.githubusercontent.com/92781591/186173331-e3bd0fdf-4b0f-461e-9cc9-721bed81aeb8.png)               
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
