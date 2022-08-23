@@ -1,4 +1,4 @@
-App to save the list of products or items which are are on your wish list
+App to save the list of products or items .
 
 -> add products and display all products are implemented ,once a product is added the product is stored in the firebase storage . This project was very helpful to know about the firebase firestore and also about the firebase login using email and password.  
 
